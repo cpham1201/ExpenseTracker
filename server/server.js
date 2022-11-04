@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose')
+const connection = require("./db")
+const userRoutes = require("./routes/users")
+const authRoutes = require("./routes/auth")
 
 require('dotenv').config();
 const { PORT = 8000, DATABASE_URL } = process.env;
@@ -13,15 +16,13 @@ mongoose.connect(DATABASE_URL);
 app.use(cors());
 app.use(express.json());
 
-mongoose.connection
-.on('connected', () => console.log('Connected to MongoDB'))
-.on('error', (error) => console.log('MongoDB Error:' + error.message));
-
-
-app.get('/', (req, res) => {
-  res.send('Welcome to the ExpenseTracker API');
-});
+//database connection 
+connection()
 
 app.listen(PORT, ()=> {
   console.log(`Server is running on port ${PORT}`)
 })
+
+//routes 
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes)
