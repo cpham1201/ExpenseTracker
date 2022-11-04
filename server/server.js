@@ -7,6 +7,7 @@ const userRoutes = require("./routes/users")
 const authRoutes = require("./routes/auth")
 
 require('dotenv').config();
+
 const { PORT = 8000, DATABASE_URL } = process.env;
 
 mongoose.connect(DATABASE_URL);
