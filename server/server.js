@@ -19,10 +19,11 @@ app.use(express.json());
 //database connection 
 connection()
 
+//routes 
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes)
+
 app.listen(PORT, ()=> {
   console.log(`Server is running on port ${PORT}`)
 })
 
-//routes 
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes)
