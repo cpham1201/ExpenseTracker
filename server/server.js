@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const connection = require("./db")
 const userRoutes = require("./routes/users")
 const authRoutes = require("./routes/auth")
+const userForm = require("./routes/form")
 
 require('dotenv').config();
 
@@ -23,6 +24,8 @@ connection()
 //routes 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes)
+app.use("/api/form", userForm)
+
 
 app.listen(PORT, ()=> {
   console.log(`Server is running on port ${PORT}`)
