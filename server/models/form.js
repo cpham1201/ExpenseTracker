@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Joi = requrie('joi');
+const Joi = require('joi');
 
 const userFormSchema = new mongoose.Schema({
     salary: { type: String, required: true },
@@ -13,13 +13,13 @@ const userFormSchema = new mongoose.Schema({
 
 const validate = (data) => {
 	const schema = Joi.object({
-		salary: Joi.string().required().label(""),
-		mortgage: Joi.string().required().label(""),
-		vehicle: Joi.string().required().label(""),
-		utilities: Joi.string().required().label(""),
-		groceries: Joi.string().required().label(""),
-		expenditures: Joi.string().required().label(""),
-		savings: Joi.string().required().label(""),
+		salary: Joi.string().label(""),
+		mortgage: Joi.string().label(""),
+		vehicle: Joi.string().label(""),
+		utilities: Joi.string().label(""),
+		groceries: Joi.string().label(""),
+		expenditures: Joi.string().label(""),
+		savings: Joi.string().label(""),
 	});
 	return schema.validate(data);
 };
